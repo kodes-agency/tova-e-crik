@@ -1,7 +1,8 @@
 'use client'
 
+import {isMobile} from 'react-device-detect';
 import { Media } from '@/payload-types'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
 type Props = {
@@ -13,15 +14,33 @@ type Props = {
 }
 
 export const Menu = ({ menu, index }: { menu: Props; index: number }) => {
+  const router = useRouter()
+
   return (
     <div key={index} className="w-full flex flex-col items-center">
-      <Link
-        href={menu.buttonLink}
-        target={menu.isExternalLink ? '_blank' : '_self'}
+      <button
         className="font-black peer text-center lowercase text-6xl py-2 relative z-10 w-full hover:invert hover:mix-blend-difference"
+        onClick={(e) => {
+          if(isMobile){
+            e.preventDefault()
+            setTimeout(() => {
+              if (menu.isExternalLink) {
+                window.open(menu.buttonLink, '_blank')
+              } else {
+                router.push(menu.buttonLink)
+              }
+            }, 1500)
+          } else {
+            if (menu.isExternalLink) {
+              window.open(menu.buttonLink, '_blank')
+            } else {
+              router.push(menu.buttonLink)
+            }
+          }
+        }}
       >
         {menu.buttonText}
-      </Link>
+      </button>
       <Image
         // @ts-expect-error
         src={menu.thumbnail.url} alt={menu.thumbnail.alt}
@@ -32,4 +51,14 @@ export const Menu = ({ menu, index }: { menu: Props; index: number }) => {
       />
     </div>
   )
+}
+
+{
+  /* <Link
+href={menu.buttonLink}
+target={menu.isExternalLink ? '_blank' : '_self'}
+className="font-black peer text-center lowercase text-6xl py-2 relative z-10 w-full hover:invert hover:mix-blend-difference"
+>
+{menu.buttonText}
+</Link> */
 }

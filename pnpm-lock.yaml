@@ -36,6 +36,9 @@ dependencies:
   '@radix-ui/react-popover':
     specifier: ^1.1.1
     version: 1.1.1(react-dom@19.0.0-rc-fb9a90fa48-20240614)(react@19.0.0-rc-fb9a90fa48-20240614)(types-react-dom@19.0.0-beta.2)(types-react@19.0.0-beta.2)
+  '@radix-ui/react-separator':
+    specifier: ^1.1.0
+    version: 1.1.0(react-dom@19.0.0-rc-fb9a90fa48-20240614)(react@19.0.0-rc-fb9a90fa48-20240614)(types-react-dom@19.0.0-beta.2)(types-react@19.0.0-beta.2)
   '@radix-ui/react-slot':
     specifier: ^1.1.0
     version: 1.1.0(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-beta.2)
@@ -63,6 +66,9 @@ dependencies:
   react:
     specifier: ^19.0.0-rc-f994737d14-20240522
     version: 19.0.0-rc-fb9a90fa48-20240614
+  react-device-detect:
+    specifier: ^2.2.3
+    version: 2.2.3(react-dom@19.0.0-rc-fb9a90fa48-20240614)(react@19.0.0-rc-fb9a90fa48-20240614)
   react-dom:
     specifier: ^19.0.0-rc-f994737d14-20240522
     version: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
@@ -2838,6 +2844,26 @@ packages:
         optional: true
     dependencies:
       '@radix-ui/react-slot': 1.1.0(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-beta.2)
+      '@types/react': /types-react@19.0.0-beta.2
+      '@types/react-dom': /types-react-dom@19.0.0-beta.2
+      react: 19.0.0-rc-fb9a90fa48-20240614
+      react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
+    dev: false
+
+  /@radix-ui/react-separator@1.1.0(react-dom@19.0.0-rc-fb9a90fa48-20240614)(react@19.0.0-rc-fb9a90fa48-20240614)(types-react-dom@19.0.0-beta.2)(types-react@19.0.0-beta.2):
+    resolution: {integrity: sha512-3uBAs+egzvJBDZAzvb/n4NxxOYpnspmWxO2u5NbZ8Y6FM/NdrGSF9bop3Cf6F6C71z1rTSn8KV0Fo2ZVd79lGA==}
+    peerDependencies:
+      '@types/react': npm:types-react@19.0.0-beta.2
+      '@types/react-dom': npm:types-react-dom@19.0.0-beta.2
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@radix-ui/react-primitive': 2.0.0(react-dom@19.0.0-rc-fb9a90fa48-20240614)(react@19.0.0-rc-fb9a90fa48-20240614)(types-react-dom@19.0.0-beta.2)(types-react@19.0.0-beta.2)
       '@types/react': /types-react@19.0.0-beta.2
       '@types/react-dom': /types-react-dom@19.0.0-beta.2
       react: 19.0.0-rc-fb9a90fa48-20240614
@@ -7235,6 +7261,17 @@ packages:
       react-onclickoutside: 6.13.1(react-dom@19.0.0-rc-fb9a90fa48-20240614)(react@19.0.0-rc-fb9a90fa48-20240614)
     dev: false
 
+  /react-device-detect@2.2.3(react-dom@19.0.0-rc-fb9a90fa48-20240614)(react@19.0.0-rc-fb9a90fa48-20240614):
+    resolution: {integrity: sha512-buYY3qrCnQVlIFHrC5UcUoAj7iANs/+srdkwsnNjI7anr3Tt7UY6MqNxtMLlr0tMBied0O49UZVK8XKs3ZIiPw==}
+    peerDependencies:
+      react: '>= 0.14.0'
+      react-dom: '>= 0.14.0'
+    dependencies:
+      react: 19.0.0-rc-fb9a90fa48-20240614
+      react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
+      ua-parser-js: 1.0.38
+    dev: false
+
   /react-diff-viewer-continued@3.2.6(react-dom@19.0.0-rc-fb9a90fa48-20240614)(react@19.0.0-rc-fb9a90fa48-20240614):
     resolution: {integrity: sha512-GrzyqQnjIMoej+jMjWvtVSsQqhXgzEGqpXlJ2dAGfOk7Q26qcm8Gu6xtI430PBUyZsERe8BJSQf+7VZZo8IBNQ==}
     engines: {node: '>= 8'}
@@ -8266,6 +8303,10 @@ packages:
     resolution: {integrity: sha512-NcRtPEOsPFFWjobJEtfihkLCZCXZt/os3zf8nTxjVH3RvTSxjrCamJpbExGvYOF+tFHc3pA65qpdwPbzjohhew==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  /ua-parser-js@1.0.38:
+    resolution: {integrity: sha512-Aq5ppTOfvrCMgAPneW1HfWj66Xi7XL+/mIy996R1/CLS/rcyJQm6QZdsKrUeivDFQ+Oc9Wyuwor8Ze8peEoUoQ==}
+    dev: false
 
   /uint8array-extras@0.3.0:
     resolution: {integrity: sha512-erJsJwQ0tKdwuqI0359U8ijkFmfiTcq25JvvzRVc1VP+2son1NJRXhxcAKJmAW3ajM8JSGAfsAXye8g4s+znxA==}
