@@ -55,6 +55,7 @@ export const Menu = ({ menu, index }: { menu: Props; index: number }) => {
         height={150}
         className="absolute top-0 left-0 w-full object-cover h-full pointer-events-none z-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-300 ease-in-out"
         unoptimized={true}
+        priority
       />
     </div>
   )

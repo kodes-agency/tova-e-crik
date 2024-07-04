@@ -11,7 +11,7 @@ export default async function Page() {
 
   return (
     <div className="h-screen flex items-center justify-center ">
-      <section className="flex flex-col items-center [&_a]:hover:opacity-0 hover:[&_a]:hover:opacity-100">
+      <section className="flex flex-col items-center lg:[&_a]:hover:opacity-0 lg:hover:[&_a]:hover:opacity-100">
         {page.content.menu.map((menuItem, index) => (
             // @ts-expect-error
             <Menu key={index} menu={menuItem} />
