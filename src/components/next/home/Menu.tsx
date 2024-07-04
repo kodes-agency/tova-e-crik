@@ -1,9 +1,10 @@
 'use client'
 
-import {isMobile} from 'react-device-detect';
+// import {isMobile} from 'react-device-detect';
 import { Media } from '@/payload-types'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import Link from 'next/link';
 
 type Props = {
   buttonText: string
@@ -18,7 +19,7 @@ export const Menu = ({ menu, index }: { menu: Props; index: number }) => {
 
   return (
     <div key={index} className="w-full flex flex-col items-center">
-      <button
+      {/* <button
         className="font-black peer text-center lowercase text-6xl py-2 relative z-10 w-full hover:invert hover:mix-blend-difference"
         onClick={(e) => {
           if(isMobile){
@@ -40,7 +41,13 @@ export const Menu = ({ menu, index }: { menu: Props; index: number }) => {
         }}
       >
         {menu.buttonText}
-      </button>
+      </button> */}
+      {
+        <Link 
+          className='font-black peer text-center lowercase text-6xl py-2 relative z-10 w-full hover:invert hover:mix-blend-difference'
+          href={menu.buttonLink}
+        >{menu.buttonText}</Link>
+      }
       <Image
         // @ts-expect-error
         src={menu.thumbnail.url} alt={menu.thumbnail.alt}
