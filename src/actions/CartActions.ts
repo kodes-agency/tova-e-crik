@@ -4,7 +4,7 @@ import Medusa from '@medusajs/medusa-js'
 import { cookies } from 'next/headers'
 const medusa = new Medusa({
   maxRetries: 3,
-  baseUrl: 'http://localhost:9000',
+  baseUrl: process.env.MEDUSA_BACKEND_URL || 'http://localhost:9000',
 })
 
 export async function getCart() {

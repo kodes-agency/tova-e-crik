@@ -7,7 +7,7 @@ import { Cart } from '@/components/next/Cart'
 
 const medusa = new Medusa({
   maxRetries: 3,
-  baseUrl: 'http://localhost:9000',
+  baseUrl: process.env.MEDUSA_BACKEND_URL || 'http://localhost:9000',
 })
 
 const montserrat = Montserrat({

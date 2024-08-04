@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 const medusa = new Medusa({
   maxRetries: 3,
-  baseUrl: 'http://localhost:9000',
+  baseUrl: process.env.MEDUSA_BACKEND_URL || 'http://localhost:9000',
 })
 
 export const ShopCollection = async () => {
