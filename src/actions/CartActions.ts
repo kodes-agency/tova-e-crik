@@ -20,12 +20,15 @@ export async function getCart() {
     }
 
     const { cart } = await medusa.carts.retrieve(cartId)
-    
+
     console.log('Cart retrieved')
+    
     return cart
   } catch (error) {
+    const cookieStore = cookies()
+    const { cart } = await medusa.carts.create()
+    cookieStore.set('cart_id', cart.id)
     console.error('Error retrieving cart:', error)
-    throw new Error('Failed to retrieve cart')
   }
 }
 

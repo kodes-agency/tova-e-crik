@@ -9,10 +9,9 @@ import { useCartStore } from '@/store/store'
 import Link from 'next/link'
 import { buttonVariants } from '../ui/button'
 
-export const Cart = ({setIsOpen}: {setIsOpen: Dispatch<SetStateAction<boolean>>}) => {
+export const Cart = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
   const [isLoading, setIsLoading] = useState(false)
   const { cart, setCart } = useCartStore((state) => state)
-
 
   if (cart?.items?.length === 0)
     return <div>No items added. Find something you like and add it to your cart!</div>
@@ -30,21 +29,21 @@ export const Cart = ({setIsOpen}: {setIsOpen: Dispatch<SetStateAction<boolean>>}
                     <Image
                       src={item.thumbnail}
                       alt={item.title}
-                      width={50}
-                      height={50}
+                      width={80}
+                      height={80}
                       priority
-                      className="w-20 h-20 aspect-square object-cover"
+                      className="aspect-[1/1] object-cover rounded-sm"
                     />
-                    <div>
-                      <p className="font-bold">{item.title}</p>
-                      <p className=" opacity-50">{item.variant.title}</p>
-                      <p>
+                    <div className="space-y-0.5">
+                      <p className="font-bold text-sm leading-none">{item.title}</p>
+                      <p className="opacity-50 text-sm">{item.variant.title}</p>
+                      <p className="text-sm">
                         {item.quantity} x {formatPrice(item.unit_price)}
                       </p>
                     </div>
                   </div>
                 </Link>
-                
+
                 <div className="flex items-center space-x-2">
                   <div className="flex flex-col">
                     <button
@@ -95,7 +94,13 @@ export const Cart = ({setIsOpen}: {setIsOpen: Dispatch<SetStateAction<boolean>>}
           <p>{formatPrice(cart?.total || 0)}</p>
         </div>
         <div className="flex flex-col items-end w-full">
-          <Link onClick={()=> setIsOpen(false)} href={"/checkout"} className={buttonVariants({variant:'default'})}>Checkout</Link>
+          <Link
+            onClick={() => setIsOpen(false)}
+            href={'/checkout'}
+            className={buttonVariants({ variant: 'default' })}
+          >
+            Checkout
+          </Link>
         </div>
       </div>
     </div>

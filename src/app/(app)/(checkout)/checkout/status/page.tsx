@@ -9,18 +9,15 @@ import {
 } from '@/components/ui/card'
 import Image from 'next/image'
 import { formatPrice } from '@/functions/next/formatFunctions'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import Link from 'next/link'
-import { ChevronLeft } from 'lucide-react'
 
 export default async function Page({
   searchParams,
 }: {
   searchParams: { cart_id: string; error: '' }
 }) {
-  console.log(searchParams)
   const order = await getOrder(searchParams.cart_id)
-  console.log(order)
   if (!order)
     return (
       <div className="flex flex-col items-center min-h-screen py-10 pb-40 md:pb-20 px-5 md:px-10">
@@ -30,7 +27,7 @@ export default async function Page({
           <div className="flex items-center justify-center">
             <Link href="/">
               <Image
-                src="/files/logo.webp"
+                src={"/files/logo.webp"}
                 alt="TOVA E CIRK LOGO"
                 width={60}
                 height={60}
@@ -43,7 +40,7 @@ export default async function Page({
 
           </div>
         </div>
-        <Card className="max-w-md">
+        <Card className="max-w-md ">
           <CardHeader>
             <CardTitle>Ooops. We cannot find an order with the provided ID.</CardTitle>
             <CardDescription>
@@ -83,7 +80,7 @@ export default async function Page({
         <div>
         </div>
       </div>
-      <Card className="max-w-md">
+      <Card className="max-w-md ">
         <CardHeader>
           <CardTitle>Your order has been recieved sucessfully!</CardTitle>
           <CardDescription>Here are your order details:</CardDescription>
@@ -145,6 +142,15 @@ export default async function Page({
               <p>Subtotal:</p>
               <p className='font-medium'>{formatPrice(order?.order?.subtotal || 0)}</p>
             </div>
+            {
+              order?.order?.discount_total &&
+              order?.order?.discount_total > 0 && (
+                <div className="flex justify-between">
+                  <p>Discount:</p>
+                  <p className='font-medium'>{formatPrice(order?.order?.discount_total || 0)}</p>
+                </div>
+              )
+            }
             <div className="flex justify-between">
               <p>Shipping:</p>
               <p className='font-medium'>{formatPrice(order?.order?.shipping_total || 0)}</p>

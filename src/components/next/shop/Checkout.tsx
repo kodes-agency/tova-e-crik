@@ -41,7 +41,6 @@ import Link from 'next/link'
 import { formSchema } from '@/schemas/checkoutFormSchema'
 import { Label } from '@/components/ui/label'
 import { PricedShippingOption } from '@medusajs/medusa/dist/types/pricing'
-import { revalidatePath, revalidateTag } from 'next/cache'
 
 export const Checkout = ({
   initialCart,

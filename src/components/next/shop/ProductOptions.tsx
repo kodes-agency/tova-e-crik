@@ -33,38 +33,13 @@ export const ProductOptions = ({
   return (
     <div className="space-y-4 flex flex-col items-center">
       <p className=" font-black text-3xl">{formatPrice(price || 0)}</p>
-      {/* <div className='flex space-x-4'>
-        {options?.map((option, id) => (
-          <div key={id} className='p-3 bg-cyan-50 rounded-md flex flex-col space-y-2 ring-2 ring-white'>
-            <h2 className='font-medium'>{id+1}. Choose your {option.title}</h2>
-            <ToggleGroup
-              key={option.id}
-              className='flex justify-start items-start'
-              type="single"
-              size="sm"
-              onValueChange={(value) => {
-                setSelectedOptions((prev) => ({
-                  ...prev,
-                  [option.title]: value,
-                }))
-              }}
-            >
-              {option.values.map((value,idx) => (
-                <ToggleGroupItem value={value} key={value} className=' data-[state=on]:bg-white data-[state=on]:ring-1 data-[state=on]:ring-black'> 
-                  {value}
-                </ToggleGroupItem>
-              ))}
-            </ToggleGroup>
-          </div>
-        ))}
-      </div> */}
       {
         variants &&
         variants?.length > 1 && (
           <div className="flex flex-col">
             {options?.map((option, id) => (
               <div key={id} className="p-3  rounded-md flex flex-col space-y-2 ">
-                <h2 className="font-medium">Choose your {option.title}</h2>
+                <h2 className="font-medium text-center">Choose your {option.title}</h2>
                 <ToggleGroup
                   key={option.id}
                   className=""

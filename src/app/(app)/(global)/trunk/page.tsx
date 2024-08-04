@@ -2,6 +2,8 @@ import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 import Link from 'next/link'
 import Image from 'next/image'
+export const dynamic = 'force-dynamic'
+
 
 export default async function Page() {
   const payload = await getPayloadHMR({ config })
@@ -11,6 +13,7 @@ export default async function Page() {
   })
 
   const trunk = page.docs
+
 
   return (
     <section className="flex flex-col min-h-screen items-center">
@@ -27,7 +30,7 @@ export default async function Page() {
               >
                 <article className="relative flex items-center justify-center">
                   <Image
-                    className="group-hover:mix-blend-luminosity    transition-all duration-300 group-hover:ring-4 group-hover:ring-white"
+                    className="group-hover:mix-blend-luminosity aspect-square object-cover transition-all duration-300 group-hover:ring-4 group-hover:ring-white"
                     // @ts-expect-error
                     src={item.images.images[0].image.url} alt={item.images.images[0].image.alt}
                     width={800}

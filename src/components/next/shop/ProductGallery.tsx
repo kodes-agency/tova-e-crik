@@ -1,38 +1,61 @@
-import Medusa from '@medusajs/medusa-js'
-import Image from 'next/image'
-import Link from 'next/link'
-const medusa = new Medusa({
-  maxRetries: 3,
-  baseUrl: 'http://localhost:9000',
-})
+'use client'
 
-export const ProductGallery = async () => {
-  const { collections } = await medusa.collections.list()
-  const { products, limit, offset, count } = await medusa.products.list()
+import Image from 'next/image'
+import { PricedProduct } from '@medusajs/medusa/dist/types/pricing'
+import { useState } from 'react'
+import Lightbox from 'yet-another-react-lightbox'
+import { Share, Counter, Zoom } from 'yet-another-react-lightbox/plugins'
+import { ScrollArea } from "@/components/ui/scroll-area"
+import 'yet-another-react-lightbox/styles.css'
+import 'yet-another-react-lightbox/plugins/thumbnails.css'
+import 'yet-another-react-lightbox/plugins/counter.css'
+
+export const ProductGallery = ({ products }: { products: PricedProduct[] }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [selectedImage, setSelectedImage] = useState(0)
+
+  const gallery = [
+    {
+      src: products[0].thumbnail || '',
+      alt: products[0].title || '',
+    },
+    ...(products[0]?.images?.map((image, id) => ({
+      src: image.url,
+      alt: `${products[0].title} ${id}`,
+    })) || []),
+  ]
+
   return (
-    <div>
-      {collections.map((collection, id) => (
-        <div key={id} className='flex flex-col space-y-10'>
-          <h2 className="text-center font-black lowercase">{collection.title} - {new Date(collection.created_at).toLocaleDateString()}</h2>
-          <div className='flex space-x-10'>
-            {products.map((product, id) => (
-              <div key={id} className="bg-rose-100 rounded-md ring-1 ring-black p-2 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                {product.collection_id === collection.id && (
-                  <Link href={'/shop/product/' + product.handle} className="flex flex-col items-center justify-between h-full">
-                    <Image
-                      src={product.thumbnail || ''}
-                      alt={product.title || ''}
-                      width={250}
-                      height={250}
-                    />
-                    <h2>{product.title}</h2>
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+    <ScrollArea className="space-y-10 h-[60vh] md:h-auto">
+      {gallery.map((image, id) => (
+        <button
+          className="w-full"
+          key={id}
+          aria-label={`Open image ${id + 1} in lightbox`}
+          onClick={() => {
+            setSelectedImage(id)
+            setIsOpen(true)
+          }}
+        >
+          <Image
+            key={id}
+            src={image.src}
+            alt={image.alt}
+            width={200}
+            height={200}
+            priority
+            className="w-full"
+          />
+        </button>
       ))}
-    </div>
+      <Lightbox
+        open={isOpen}
+        close={() => setIsOpen(false)}
+        plugins={[Counter, Zoom, Share]}
+        index={selectedImage}
+        slides={gallery}
+        controller={{ closeOnBackdropClick: true }}
+      />
+    </ScrollArea>
   )
 }

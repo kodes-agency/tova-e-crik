@@ -1,12 +1,12 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
-import { Share, Counter, Zoom } from "yet-another-react-lightbox/plugins";
+import { Share, Counter, Zoom } from 'yet-another-react-lightbox/plugins'
 import 'yet-another-react-lightbox/styles.css'
-import "yet-another-react-lightbox/plugins/thumbnails.css";
-import "yet-another-react-lightbox/plugins/counter.css";
+import 'yet-another-react-lightbox/plugins/thumbnails.css'
+import 'yet-another-react-lightbox/plugins/counter.css'
 
 export type GalleryProps = {
   images: {
@@ -29,16 +29,9 @@ export const Gallery = ({ gallery }: { gallery: GalleryProps }) => {
   const [isOpen, setIsOpen] = useState(false)
   const firstButtonRef = useRef<HTMLButtonElement | null>(null)
 
-  useEffect(() => {
-    if (isOpen) {
-      // When the lightbox is open, move focus to the first button or the lightbox itself
-      firstButtonRef.current?.focus()
-    }
-  }, [isOpen])
-
   console.log(gallery.images.length)
   return (
-    <div className='md:col-span-2 md:mr-10 lg:mr-20 md:sticky md:top-40 h-fit'>
+    <div className="md:col-span-2 md:mr-10 lg:mr-20 md:sticky md:top-40 h-fit">
       <div className="flex flex-col space-y-3">
         <div>
           {gallery.images.map((image, index) => {
@@ -61,7 +54,7 @@ export const Gallery = ({ gallery }: { gallery: GalleryProps }) => {
                   width={800}
                   height={800}
                   priority
-                  loading='eager'
+                  loading="eager"
                 />
               </button>
             )
@@ -71,7 +64,12 @@ export const Gallery = ({ gallery }: { gallery: GalleryProps }) => {
           {gallery.images.length > 1 &&
             gallery.images.map((image, index) => {
               return (
-                <button key={index} className="mt-0 pt-0" onClick={() => setSelectedImage(index)} aria-label='Additional image'>
+                <button
+                  key={index}
+                  className="mt-0 pt-0"
+                  onClick={() => setSelectedImage(index)}
+                  aria-label="Additional image"
+                >
                   <Image
                     className={`object-cover min-w-48 lg:min-w-60 aspect-video ${
                       index === selectedImage
@@ -96,7 +94,7 @@ export const Gallery = ({ gallery }: { gallery: GalleryProps }) => {
         plugins={[Counter, Zoom, Share]}
         index={selectedImage}
         slides={images}
-        controller={{closeOnBackdropClick: true}}
+        controller={{ closeOnBackdropClick: true }}
       />
     </div>
   )
