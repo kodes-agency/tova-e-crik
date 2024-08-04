@@ -9,7 +9,10 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'localhost',
         port:'9000',
-        
+      }, 
+      {
+        protocol: 'https', 
+        hostname: 'tova-e-cirk-medusa-s3.s3.eu-west-3.amazonaws.com',
       }
     ]
   },
