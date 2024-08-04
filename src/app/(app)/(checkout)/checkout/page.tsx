@@ -1,6 +1,8 @@
 import { Checkout } from '@/components/next/shop/Checkout'
 import { getCheckoutCart } from '@/actions/CheckoutActions'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Page() {
   const data = await getCheckoutCart()
 

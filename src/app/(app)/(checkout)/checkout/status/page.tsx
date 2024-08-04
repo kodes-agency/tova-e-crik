@@ -12,6 +12,9 @@ import { formatPrice } from '@/functions/next/formatFunctions'
 import { buttonVariants } from '@/components/ui/button'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
+
 export default async function Page({
   searchParams,
 }: {

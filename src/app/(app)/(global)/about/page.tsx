@@ -2,6 +2,8 @@ import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 import Image from 'next/image'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Page() {
   const payload = await getPayloadHMR({ config })
 
