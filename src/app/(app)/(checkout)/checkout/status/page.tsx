@@ -85,54 +85,54 @@ export default async function Page({
       </div>
       <Card className="max-w-md ">
         <CardHeader>
-          <CardTitle>Your order has been recieved sucessfully!</CardTitle>
-          <CardDescription>Here are your order details:</CardDescription>
+          <CardTitle className='text-center md:text-start'>Your order has been recieved sucessfully!</CardTitle>
+          <CardDescription className='text-center md:text-start'>Here are your order details:</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex justify-between">
             <p>Name:</p>
-            <p className='font-medium'>
+            <p className='font-medium text-end'>
               {order?.order?.shipping_address?.first_name}{' '}
               {order?.order?.shipping_address.last_name}
             </p>
           </div>
           <div className="flex justify-between">
             <p>Shipping Address:</p>
-            <p className='font-medium'>{order?.order?.shipping_address?.address_1}</p>
+            <p className='font-medium text-end'>{order?.order?.shipping_address?.address_1}</p>
           </div>
           <div className="flex justify-between">
             <p>City:</p>
-            <p className='font-medium'>{order?.order?.shipping_address?.city}</p>
+            <p className='font-medium text-end'>{order?.order?.shipping_address?.city}</p>
           </div>
           <div className="flex justify-between">
             <p>Phone:</p>
-            <p className='font-medium'>{order?.order?.shipping_address?.phone}</p>
+            <p className='font-medium text-end'>{order?.order?.shipping_address?.phone}</p>
           </div>
           <div className="flex justify-between">
             <p>Email:</p>
-            <p className='font-medium'>{order?.order?.email}</p>
+            <p className='font-medium text-end'>{order?.order?.email}</p>
           </div>
           <div>
             <p>Your order:</p>
             {order?.order?.items.map((item, id) => (
               <div
                 key={id}
-                className="grid grid-cols-4 border-b py-2 border-black border-opacity-20 mb-2"
+                className="flex justify-between items-center border-b py-2 border-black border-opacity-20 mb-2"
               >
                 <div className="flex items-center col-span-3">
-                  <p className="w-4">{id + 1}.</p>
+                  <p className="w-5">{id + 1}.</p>
                   <Image
                     src={item.thumbnail || ''}
                     alt={item.title}
                     width={50}
                     height={50}
                     priority
-                    className="w-14 h-14 rounded-sm aspect-square object-cover"
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-sm aspect-square object-cover"
                   />
                   <div className="ml-2">
                     <script type="module" src=""></script>
                     <p className="font-medium leading-none">{item.title}</p>
-                    <p className=" opacity-50">{item.variant.title}</p>
+                    <p className=" text-xs opacity-50">{item.variant.title}</p>
                   </div>
                 </div>
                 <div>
@@ -165,7 +165,7 @@ export default async function Page({
           </div>
         </CardContent>
         <CardFooter>
-          <Link className={buttonVariants({ variant: 'default' })} href="/">
+          <Link className={buttonVariants({ variant: 'default' })+" w-full"} href="/">
             Back to home
           </Link>
         </CardFooter>
