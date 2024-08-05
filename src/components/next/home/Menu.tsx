@@ -64,33 +64,34 @@ export const Menu = ({ menu, index }: { menu: Props; index: number }) => {
        <source src={menu.thumbnail.url} type="video/webm"/>
     </video>
   </div>
+  } else {
+    return (
+      <div key={index} className="w-full flex flex-col items-center">
+        <Link 
+          className='font-black peer text-center lowercase text-6xl py-2 relative z-10 w-full hover:invert hover:mix-blend-difference'
+          href={menu.buttonLink}
+          data-video={menu.buttonLink}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >{menu.buttonText}</Link>
+        <video
+          // @ts-expect-error
+          src={menu.thumbnail.url} alt={menu.thumbnail.alt}
+          className="fixed top-0 left-0 w-full object-cover h-full pointer-events-none z-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+          loop
+          data-video={menu.buttonLink}
+          muted
+          disablePictureInPicture
+          disableRemotePlayback
+          playsInline
+          preload="auto"
+        >
+          {/* @ts-ignore */}
+           <source src={menu.thumbnail.url} type="video/webm"/>
+        </video>
+      </div>
+    )
   }
 
-  return (
-    <div key={index} className="w-full flex flex-col items-center">
-      <Link 
-        className='font-black peer text-center lowercase text-6xl py-2 relative z-10 w-full hover:invert hover:mix-blend-difference'
-        href={menu.buttonLink}
-        data-video={menu.buttonLink}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >{menu.buttonText}</Link>
-      <video
-        // @ts-expect-error
-        src={menu.thumbnail.url} alt={menu.thumbnail.alt}
-        className="fixed top-0 left-0 w-full object-cover h-full pointer-events-none z-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-300 ease-in-out"
-        loop
-        data-video={menu.buttonLink}
-        muted
-        disablePictureInPicture
-        disableRemotePlayback
-        playsInline
-        preload="auto"
-      >
-        {/* @ts-ignore */}
-         <source src={menu.thumbnail.url} type="video/webm"/>
-      </video>
-    </div>
-  )
 }
 
