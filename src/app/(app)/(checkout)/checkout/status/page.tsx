@@ -1,4 +1,4 @@
-import { completeCheckout, getOrder } from '@/actions/CheckoutActions'
+import { getOrder } from '@/actions/CheckoutActions'
 import {
   Card,
   CardContent,
