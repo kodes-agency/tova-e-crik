@@ -26,7 +26,7 @@ export const ProductGallery = ({ products }: { products: PricedProduct[] }) => {
   ]
 
   return (
-    <section className="max-h-[58vh] md:max-w-min no-scrollbar overflow-y-scroll">
+    <section className="max-h-[58vh] md:max-h-max no-scrollbar overflow-y-scroll">
       <div className='space-y-5'>
         {gallery.map((image, id) => (
           <button

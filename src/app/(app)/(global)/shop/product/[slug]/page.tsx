@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { ProductOptions } from '@/components/next/shop/ProductOptions'
 import Medusa from '@medusajs/medusa-js'
 import Link from 'next/link'

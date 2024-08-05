@@ -28,7 +28,6 @@ export const ProductOptions = ({
     setVariantId(variantId)
     if (!variantId) return
     setPrice(variants.find((variant) => variant.id === variantId)?.prices[0].amount)
-
   }, [selectedOptions])
   return (
     <div className="space-y-4 flex flex-col items-center">
