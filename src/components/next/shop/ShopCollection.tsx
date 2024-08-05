@@ -22,7 +22,7 @@ export const ShopCollection = async () => {
           <h2 className="text-center font-black lowercase">
             {collection.title} - {new Date(collection.created_at).toLocaleDateString()}
           </h2>
-          <div className="flex gap-5 justify-center">
+          <div className="flex flex-col md:flex-row gap-5 justify-center">
             {products
               .filter((product) => product.collection_id === collection.id)
               .map((product, id) => (

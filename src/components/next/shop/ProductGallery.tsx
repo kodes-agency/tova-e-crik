@@ -5,7 +5,7 @@ import { PricedProduct } from '@medusajs/medusa/dist/types/pricing'
 import { useState } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
 import { Share, Counter, Zoom } from 'yet-another-react-lightbox/plugins'
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { ScrollArea } from '@/components/ui/scroll-area'
 import 'yet-another-react-lightbox/styles.css'
 import 'yet-another-react-lightbox/plugins/thumbnails.css'
 import 'yet-another-react-lightbox/plugins/counter.css'
@@ -26,28 +26,30 @@ export const ProductGallery = ({ products }: { products: PricedProduct[] }) => {
   ]
 
   return (
-    <ScrollArea className="space-y-10 h-[60vh] md:h-auto">
-      {gallery.map((image, id) => (
-        <button
-          className="w-full"
-          key={id}
-          aria-label={`Open image ${id + 1} in lightbox`}
-          onClick={() => {
-            setSelectedImage(id)
-            setIsOpen(true)
-          }}
-        >
-          <Image
-            key={id}
-            src={image.src}
-            alt={image.alt}
-            width={200}
-            height={200}
-            priority
+    <section className="max-h-[58vh] md:max-w-min no-scrollbar overflow-y-scroll">
+      <div className='space-y-5'>
+        {gallery.map((image, id) => (
+          <button
             className="w-full"
-          />
-        </button>
-      ))}
+            key={id}
+            aria-label={`Open image ${id + 1} in lightbox`}
+            onClick={() => {
+              setSelectedImage(id)
+              setIsOpen(true)
+            }}
+          >
+            <Image
+              key={id}
+              src={image.src}
+              alt={image.alt}
+              width={200}
+              height={200}
+              priority
+              className="w-full"
+            />
+          </button>
+        ))}
+      </div>
       <Lightbox
         open={isOpen}
         close={() => setIsOpen(false)}
@@ -56,6 +58,6 @@ export const ProductGallery = ({ products }: { products: PricedProduct[] }) => {
         slides={gallery}
         controller={{ closeOnBackdropClick: true }}
       />
-    </ScrollArea>
+    </section>
   )
 }

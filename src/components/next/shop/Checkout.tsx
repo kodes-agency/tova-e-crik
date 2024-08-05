@@ -106,7 +106,7 @@ export const Checkout = ({
     <div className="max-w-5xl w-full">
       <div className="grid grid-cols-3 w-full mb-5">
         <div className='flex items-end'>
-          <Link href="/shop" className="flex items-center text-xl font-bold hover:underline hover:underline-offset-2">
+          <Link href="/shop" className="flex items-center text-xs uppercase md:normal-case  md:text-xl font-bold hover:underline hover:underline-offset-2">
             <ChevronLeft size={30} />
             Back to shop
           </Link>
@@ -137,25 +137,27 @@ export const Checkout = ({
               <CardContent>
                 <div className="space-y-2">
                   {cart?.items.map((item) => (
-                    <div key={item.id} className="flex justify-between items-center">
-                      <Link href={`/shop/product/${item.variant.product.handle}`} className="">
-                        <div className="flex space-x-4 items-center">
+                    <div key={item.id} className="grid grid-cols-4">
+                      <Link href={`/shop/product/${item.variant.product.handle}`} className=" col-span-3">
+                        <div className="flex space-x-2 items-center">
                           <Image
                             src={item.thumbnail || ''}
                             alt={item.title}
                             width={50}
                             height={50}
+                            className='aspect-square object-cover rounded-sm'
                           />
                           <div>
-                            <p>{item.title}</p>
+                            <p className='leading-none'>{item.title}</p>
                             <p className="text-sm text-gray-500">{item.variant.title}</p>
                           </div>
                         </div>
                       </Link>
-                      <div>
-                        <p className="">
-                          {item.quantity} x {formatPrice(item.unit_price)}
+                      <div className='flex flex-col justify-center'>
+                        <p className="text-end text-sm lg:text-base">
+                          {item.quantity} x
                         </p>
+                        <p className='text-sm lg:text-base text-end'>{formatPrice(item.unit_price)}</p>
                       </div>
                     </div>
                   ))}
@@ -215,8 +217,9 @@ export const Checkout = ({
                     ))}
                   </div>
                 )}
-                <div className="flex space-x-4">
+                <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4">
                   <Input
+                    className='text-base'
                     placeholder="Enter discount code"
                     onChange={({ target }) => {
                       setDiscountCode(target.value)
@@ -252,7 +255,7 @@ export const Checkout = ({
                         <FormItem className="space-y-0.5 w-full">
                           <FormLabel>First name</FormLabel>
                           <FormControl>
-                            <Input {...field} placeholder="John" />
+                            <Input className='text-base' {...field} placeholder="John" />
                           </FormControl>
                           <FormMessage className="text-xs" />
                         </FormItem>
@@ -265,7 +268,7 @@ export const Checkout = ({
                         <FormItem className="space-y-0.5 w-full">
                           <FormLabel>Last name</FormLabel>
                           <FormControl>
-                            <Input {...field} placeholder="Doe" />
+                            <Input className='text-base' {...field} placeholder="Doe" />
                           </FormControl>
                           <FormMessage className="text-xs" />
                         </FormItem>
@@ -280,7 +283,7 @@ export const Checkout = ({
                         <FormItem className="space-y-0.5 w-full">
                           <FormLabel>Email</FormLabel>
                           <FormControl>
-                            <Input {...field} type="email" placeholder="johndoe@email.com" />
+                            <Input className='text-base' {...field} type="email" placeholder="johndoe@email.com" />
                           </FormControl>
                           <FormMessage className="text-xs" />
                         </FormItem>
@@ -293,7 +296,7 @@ export const Checkout = ({
                         <FormItem className="space-y-0.5 w-full">
                           <FormLabel>Phone number</FormLabel>
                           <FormControl>
-                            <Input {...field} placeholder="+359 888 11 22 33" />
+                            <Input className='text-base' {...field} placeholder="+359 888 11 22 33" />
                           </FormControl>
                           <FormMessage className="text-xs" />
                         </FormItem>
@@ -307,7 +310,7 @@ export const Checkout = ({
                       <FormItem className="space-y-0.5">
                         <FormLabel>Address</FormLabel>
                         <FormControl>
-                          <Input {...field} placeholder="ul. Neznayna 69" />
+                          <Input className='text-base' {...field} placeholder="ul. Neznayna 69" />
                         </FormControl>
                         <FormMessage className="text-xs" />
                       </FormItem>
@@ -320,7 +323,7 @@ export const Checkout = ({
                       <FormItem className="space-y-0.5">
                         <FormLabel>City</FormLabel>
                         <FormControl>
-                          <Input {...field} placeholder="Burgas" />
+                          <Input className='text-base' {...field} placeholder="Burgas" />
                         </FormControl>
                         <FormMessage className="text-xs" />
                       </FormItem>

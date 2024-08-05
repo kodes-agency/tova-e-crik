@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <div className="grid grid-cols-1 md:grid-cols-2 w-full">
         <ProductGallery products={products} />
         <div className="flex flex-col items-center w-full">
-          <div className="flex flex-col items-center sticky top-52 max-w-sm pt-10 md:p-10 lg:p-0">
+          <div className="flex flex-col items-center sticky top-52 max-w-sm pt-5 md:p-10 lg:p-0">
             <div className="flex items-center sticky">
               <Link
                 href="/"
