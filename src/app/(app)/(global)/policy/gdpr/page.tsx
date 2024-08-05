@@ -15,10 +15,10 @@ export default async function Page() {
             <div 
                 className='
                     [&_blockquote]:font-bold [&_blockquote]:pl-5 md:[&_blockquote]:pl-10 [&_blockquote]:text-lg [&_blockquote]:max-w-3xl
-                    [&_h2]:text-2xl [&_h2]:mt-4
-                    [&_h3]:text-xl [&_h3]:mt-3
-                    [&_h4]:text-lg [&_h4]:mt-2
-                    [&_p]:mt-1
+                    [&_h2]:text-2xl [&_h2]:mt-8 [&_h2]:font-bold
+                    [&_h3]:text-xl [&_h3]:mt-6
+                    [&_h4]:text-lg [&_h4]:mt-4
+                    [&_p]:mt-4
                     [&_img]:w-full [&_img]:h-[50vh] [&_img]:object-cover
                     [&_ul]:list-disc [&_ul]:pl-6 md:[&_ul]:pl-12 [&_ul]:space-y-1
                     [&_ol]:list-decimal [&_ol]:pl-6 md:[&_ol]:pl-12 [&_ol]:space-y-1
