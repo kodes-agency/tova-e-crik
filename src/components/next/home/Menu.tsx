@@ -52,9 +52,9 @@ export const Menu = ({ menu, index }: { menu: Props; index: number }) => {
       className="fixed top-0 left-0 w-full object-cover h-full pointer-events-none z-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-300 ease-in-out"
       data-video={menu.buttonLink}
       muted
-      onEnded={()=>{
-        router.push(menu.buttonLink)
-      }}
+      // onEnded={()=>{
+      //   router.push(menu.buttonLink)
+      // }}
       disablePictureInPicture
       disableRemotePlayback
       playsInline
