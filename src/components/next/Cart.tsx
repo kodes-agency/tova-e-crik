@@ -47,11 +47,12 @@ export const Cart = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean
                 <div className="flex items-center space-x-2">
                   <div className="flex flex-col">
                     <button
+                      className='disabled:opacity-20 disabled:cursor-not-allowed'
+                      disabled={item.variant.inventory_quantity === item.quantity}
                       onClick={async () => {
                         setIsLoading(true)
-                        const cart = await updateCart(item.id, item.quantity + 1)
-                        // @ts-expect-error
-                        setCart(cart)
+                        await updateCart(item.id, item.quantity + 1)
+                        setCart()
                         setIsLoading(false)
                       }}
                     >
@@ -59,12 +60,11 @@ export const Cart = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean
                     </button>
                     <button
                       disabled={item.quantity === 1}
-                      className="disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="disabled:opacity-20 disabled:cursor-not-allowed"
                       onClick={async () => {
                         setIsLoading(true)
-                        const cart = await updateCart(item.id, item.quantity - 1)
-                        // @ts-expect-error
-                        setCart(cart)
+                        await updateCart(item.id, item.quantity - 1)
+                        setCart()
                         setIsLoading(false)
                       }}
                     >
@@ -75,9 +75,8 @@ export const Cart = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean
                     className="h-4 w-4 bg-gray-500 hover:bg-slate-900 transition-all duration-300 text-white text-xs flex items-center justify-center rounded-full"
                     onClick={async () => {
                       setIsLoading(true)
-                      const cart = await removeFromCart(item.id)
-                      // @ts-expect-error
-                      setCart(cart)
+                      await removeFromCart(item.id)
+                      setCart()
                       setIsLoading(false)
                     }}
                   >

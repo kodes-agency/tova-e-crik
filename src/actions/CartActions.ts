@@ -52,10 +52,16 @@ export async function addToCart(variant_id: string, quantity: number) {
     })
 
     console.log('Item added to cart')
-    return cart
+    return {
+      success: true,
+      message: "Item added to cart",
+      cart,
+    }
   } catch (error) {
-    console.error('Error adding item to cart:', error)
-    throw new Error('Failed to add item to cart')
+    return {
+      success: false,
+      message: "Failed to add item to cart. Most likely we do not have anymore of this item in stock",
+    }
   }
 }
 

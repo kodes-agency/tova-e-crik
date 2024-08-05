@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Cart } from '@medusajs/medusa'
 import { X, ChevronLeft } from 'lucide-react'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -87,11 +87,6 @@ export const Checkout = ({
   const handleShippingOptionChange = async (value: string) => {
     const selected = shipping_options?.find((option) => option.id === value)
     const data = await addShippingOption(selected?.id || '')
-    setSelectedShippingOption({
-      id: selected?.id || '',
-      name: selected?.name || '',
-      price: selected?.amount || 0,
-    })
     setCart(data?.cart) // Update the cart state with the new data
   }
 
@@ -99,6 +94,7 @@ export const Checkout = ({
     const { cart } = await initCheckout(values)
     setClientSecret(cart?.payment_session?.data?.client_secret as string)
   }
+
 
   return (
     <div className="max-w-5xl w-full">
@@ -336,6 +332,7 @@ export const Checkout = ({
                       defaultValue={cart?.shipping_methods[0]?.shipping_option_id || ''}
                       onValueChange={(value) => {
                         handleShippingOptionChange(value)
+                        console.log(clientSecret)
                       }}
                       className="w-full"
                     >
@@ -354,11 +351,13 @@ export const Checkout = ({
                     </ToggleGroup>
                   </div>
                   <Button
-                    className="!mt-5 w-full"
+                    className={"!mt-5 w-full" + (clientSecret === "" ? ' ' : ' bg-green-300 hover:bg-green-300 text-black')}
                     type="submit"
-                    disabled={!cart?.shipping_methods || cart?.shipping_methods.length === 0}
+                    disabled={!cart?.shipping_methods || cart?.shipping_methods.length === 0 || clientSecret !== ""}
                   >
-                    Save and continue
+                    {
+                      clientSecret ? 'Complete payment form below' : 'Save and continue'
+                    }
                   </Button>
                 </form>
               </Form>

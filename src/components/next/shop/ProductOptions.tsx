@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react'
 import { addToCart } from '@/actions/CartActions'
 import { findVariant, formatPrice } from '@/functions/next/formatFunctions'
 import { useCartStore } from '@/store/store'
+import { useToast } from "@/components/ui/use-toast"
+
 
 export const ProductOptions = ({
   options,
@@ -20,6 +22,8 @@ export const ProductOptions = ({
   const [isLoading, setIsLoading] = useState(false)
   const [price, setPrice] = useState<number | undefined>(variants[0].prices[0].amount)
   const { setCart } = useCartStore((state) => state)
+  const { toast } = useToast()
+
 
   useEffect(() => {
     if (!selectedOptions) return
@@ -36,6 +40,12 @@ export const ProductOptions = ({
     setIsLoading(true)
     const cart = await addToCart(thisVariant as string, 1)
     setCart()
+    toast({
+      variant: cart.success ? 'default' : 'destructive',
+      title: cart.success ? 'Yess!' : 'Oops, an error occurred!',
+      description: cart.message,
+      duration: 4000,
+    })
     setIsLoading(false)
   }
 
@@ -74,15 +84,24 @@ export const ProductOptions = ({
           ))}
         </div>
       )}
-      <Button
-        className={`${variant?.id ? '' : 'disabled:cursor-not-allowed'} w-full ${
-          isLoading ? 'bg-green-300 text-black hover:bg-green-300' : 'bg-black'
-        }`}
-        disabled={variants.length > 1 && !variant}
-        onClick={handleAddToCart}
-      >
-        {isLoading ? 'Adding to cart...' : 'Add to cart'}
-      </Button>
+      {
+        variant &&
+        variant.inventory_quantity > 0 ? (
+          <Button
+            className={`${variant?.id ? '' : 'disabled:cursor-not-allowed'} w-full ${
+              isLoading ? 'bg-green-300 text-black hover:bg-green-300' : 'bg-black'
+            }`}
+            disabled={variants.length > 1 && !variant}
+            onClick={handleAddToCart}
+          >
+            {isLoading ? 'Adding to cart...' : 'Add to cart'}
+          </Button>
+        ) : (
+          <Button className="bg-red-500 w-full cursor-not-allowed" disabled>
+            Out of stock
+          </Button>
+        )
+      }
     </div>
   )
 }

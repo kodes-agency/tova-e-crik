@@ -55,7 +55,14 @@ const StripeForm: React.FC<StripeFormProps> = ({ clientSecret, cartId }) => {
       {
         paymentError && <p className='text-red-600 text-sm mb-5'>{paymentError}</p>
       }
-      <PaymentElement />
+      <PaymentElement 
+        onReady={()=>{
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+          });
+        }}
+      />
       <Button className="mt-5 w-full" type="submit" disabled={!stripe || isSubmitting}>
         {isSubmitting ? 'Processing...' : 'Pay now'}
       </Button>

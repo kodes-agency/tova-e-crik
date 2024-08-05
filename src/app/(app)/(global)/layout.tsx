@@ -3,7 +3,7 @@ import { Header } from '@/components/next/Header'
 import { Footer } from '@/components/next/Footer'
 import { Montserrat } from 'next/font/google'
 import Medusa from '@medusajs/medusa-js'
-import { Cart } from '@/components/next/Cart'
+import { Toaster } from "@/components/ui/toaster"
 
 const medusa = new Medusa({
   maxRetries: 3,
@@ -26,6 +26,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          <Toaster />
         </body>
       </html>
     )

@@ -30,7 +30,7 @@ export default async function Page({
           <div className="flex items-center justify-center">
             <Link href="/">
               <Image
-                src={"/files/logo.webp"}
+                src="/files/logo.webp"
                 alt="TOVA E CIRK LOGO"
                 width={60}
                 height={60}
@@ -117,9 +117,9 @@ export default async function Page({
             {order?.order?.items.map((item, id) => (
               <div
                 key={id}
-                className=" justify-between flex items-center border-b border-black mb-2"
+                className="grid grid-cols-4 border-b py-2 border-black border-opacity-20 mb-2"
               >
-                <div className="flex items-center">
+                <div className="flex items-center col-span-3">
                   <p className="w-4">{id + 1}.</p>
                   <Image
                     src={item.thumbnail || ''}
@@ -127,36 +127,36 @@ export default async function Page({
                     width={50}
                     height={50}
                     priority
-                    className="w-20 h-20 aspect-square object-cover"
+                    className="w-14 h-14 rounded-sm aspect-square object-cover"
                   />
                   <div className="ml-2">
                     <script type="module" src=""></script>
-                    <p className="font-bold">{item.title}</p>
+                    <p className="font-medium leading-none">{item.title}</p>
                     <p className=" opacity-50">{item.variant.title}</p>
                   </div>
                 </div>
                 <div>
-                  <p className='font-medium'>{item.quantity} x</p>
-                  <p className='font-medium'>{formatPrice(item.unit_price)}</p>
+                  <p className='text-end'>{item.quantity} x</p>
+                  <p className='text-end whitespace-nowrap'>{formatPrice(item.unit_price)}</p>
                 </div>
               </div>
             ))}
             <div className="flex justify-between">
               <p>Subtotal:</p>
-              <p className='font-medium'>{formatPrice(order?.order?.subtotal || 0)}</p>
+              <p className='text-end'>{formatPrice(order?.order?.subtotal || 0)}</p>
             </div>
             {
               order?.order?.discount_total &&
-              order?.order?.discount_total > 0 && (
+              order?.order?.discount_total > 0 ? (
                 <div className="flex justify-between">
                   <p>Discount:</p>
-                  <p className='font-medium'>{formatPrice(order?.order?.discount_total || 0)}</p>
+                  <p className='text-end'>{formatPrice(order?.order?.discount_total)}</p>
                 </div>
-              )
+              ) : null
             }
             <div className="flex justify-between">
               <p>Shipping:</p>
-              <p className='font-medium'>{formatPrice(order?.order?.shipping_total || 0)}</p>
+              <p className='text-end'>{formatPrice(order?.order?.shipping_total || 0)}</p>
             </div>
             <div className="flex justify-between">
               <p className='font-bold'>Total:</p>
