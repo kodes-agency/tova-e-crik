@@ -348,7 +348,7 @@ export const Checkout = ({
                           className="h-auto p-2 w-full data-[state=on]:bg-cyan-100 data-[state=on]:ring-black data-[state=on]:ring-1"
                         >
                           <div className="flex flex-col items-start w-full">
-                            <p className="font-bold">{option.name}</p>
+                            <p className="font-bold text-xs uppercase">{option.name}</p>
                             <p>{formatPrice(option.amount || 0)}</p>
                           </div>
                         </ToggleGroupItem>
@@ -356,9 +356,8 @@ export const Checkout = ({
                     </ToggleGroup>
                   </div>
                   <Button
-                    className="!mt-5 ring-1 ring-black hover:bg-cyan-200 w-full bg-cyan-100"
+                    className="!mt-5 w-full"
                     type="submit"
-                    variant={'secondary'}
                     disabled={!cart?.shipping_methods || cart?.shipping_methods.length === 0}
                   >
                     Save and continue

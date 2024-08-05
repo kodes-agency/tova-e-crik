@@ -27,6 +27,7 @@ export const Menu = ({ menu, index }: { menu: Props; index: number }) => {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const video = document.querySelector(`video[data-video="${menu.buttonLink}"]`) as HTMLVideoElement
     if (video) {
+      video.currentTime = 0
       video.play()
     }
   }
