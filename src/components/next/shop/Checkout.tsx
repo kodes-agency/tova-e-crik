@@ -348,7 +348,7 @@ export const Checkout = ({
                           className="h-auto p-2 w-full data-[state=on]:bg-cyan-100 data-[state=on]:ring-black data-[state=on]:ring-1"
                         >
                           <div className="flex flex-col items-start w-full">
-                            <p className="font-bold text-xs uppercase">{option.name}</p>
+                            <p className="font-bold text-xs md:text-sm">{option.name}</p>
                             <p>{formatPrice(option.amount || 0)}</p>
                           </div>
                         </ToggleGroupItem>
