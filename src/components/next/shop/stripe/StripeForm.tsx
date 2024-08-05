@@ -46,7 +46,6 @@ const StripeForm: React.FC<StripeFormProps> = ({ clientSecret, cartId }) => {
         const { data } = await completeCheckout();
         setIsSubmitting(false);
         router.push('/checkout/status?cart_id=' + cartId);
-        console.log(data);
       }
     })
   };

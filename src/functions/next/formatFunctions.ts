@@ -1,7 +1,7 @@
 import type { Variant } from '@/types/medusa'
 
 
-export const findVariantId = (variants: Variant[], selectedOptions: string[]): string | null => {
+export const findVariant = (variants: Variant[], selectedOptions: string[]): Variant | null => {
     return (
       variants.find(
         (variant) =>
@@ -9,7 +9,7 @@ export const findVariantId = (variants: Variant[], selectedOptions: string[]): s
           selectedOptions.every((option) =>
             variant.options.some((variantOption) => variantOption.value === option),
           ),
-      )?.id || null
+      ) || null
     )
   }
   

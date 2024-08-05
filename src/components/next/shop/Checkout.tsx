@@ -51,7 +51,6 @@ export const Checkout = ({
 }) => {
   const [clientSecret, setClientSecret] = useState('')
   const [cart, setCart] = useState(initialCart)
-  console.log(cart)
   const [discountCode, setDiscountCode] = useState('')
   const [selectedShippingOption, setSelectedShippingOption] = useState({
     id: '',
@@ -86,7 +85,6 @@ export const Checkout = ({
   }
 
   const handleShippingOptionChange = async (value: string) => {
-    console.log(value)
     const selected = shipping_options?.find((option) => option.id === value)
     const data = await addShippingOption(selected?.id || '')
     setSelectedShippingOption({

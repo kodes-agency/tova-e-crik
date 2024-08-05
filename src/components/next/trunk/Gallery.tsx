@@ -29,7 +29,6 @@ export const Gallery = ({ gallery }: { gallery: GalleryProps }) => {
   const [isOpen, setIsOpen] = useState(false)
   const firstButtonRef = useRef<HTMLButtonElement | null>(null)
 
-  console.log(gallery.images.length)
   return (
     <div className="md:col-span-2 md:mr-10 lg:mr-20 md:sticky md:top-40 h-fit">
       <div className="flex flex-col space-y-3">
