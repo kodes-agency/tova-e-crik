@@ -44,7 +44,7 @@ export const ProductOptions = ({
       variant: cart.success ? 'default' : 'destructive',
       title: cart.success ? 'Yess!' : 'Oops, an error occurred!',
       description: cart.message,
-      duration: 4000,
+      duration: 3000,
     })
     setIsLoading(false)
   }
